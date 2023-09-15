@@ -1,0 +1,16 @@
+@model RailwayModel.Models.Ticket
+
+@using (Html.BeginForm("BookTicket", "Booking", FormMethod.Post))
+{
+    <h1>Bookings</h1>
+    <p>Passenger Name</p>
+    @Html.TextBoxFor(ticket => ticket.Passenger.FirstName)
+    <p>Departure Station</p>
+    @Html.TextBoxFor(ticket => ticket.DepartureStation.Name)
+    <p>Arrival Station</p>
+    @Html.TextBoxFor(ticket => ticket.ArrivalStation.Name)
+
+    <br>
+    <br>
+    <button type="submit">Add Ticket</button>
+}
