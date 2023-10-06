@@ -1,23 +1,24 @@
 using Microsoft.AspNetCore.Mvc;
-using RailwayModel.Models;
 using IRailway;
-using RailwayBusLogic;
+using RailwayModel.Models;
+using RailwayBusLogic.Manager;
 
 namespace RailwayWeb.Controllers
 {
-    public class BookingController : Controller
+  public class BookingController : Controller
+  {
+    public IActionResult Index()
     {
-        public IActionResult Index()
-        {
-            return View();
-        }
-
-        [HttpPost]
-        public ActionResult BookTicket(Ticket ticket)
-        {
-            IBookingManager bookingManager = new BookingManager();
-            bookingManager.BookTicket(ticket);
-            return View(bookingManager.GetTickets());
-        }
+      IBookingManager bookingManager = new BookingManager();
+      return View();
     }
+
+    [HttpPost]
+    public ActionResult AddTicket(Ticket ticket)
+    {
+      IBookingManager bookingManager = new BookingManager();
+      bookingManager.AddTicket(ticket);
+      return View(bookingManager.GetTickets());
+    }
+  }
 }

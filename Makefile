@@ -1,5 +1,6 @@
 build:
 	dotnet build
+	dotnet build IRailway/IRailway.csproj
 
 clean:
 	dotnet clean

@@ -1,0 +1,26 @@
+@model List<RailwayModel.Models.Ticket>
+<h1>Tickets</h1>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Ticket ID</th>
+            <th>Train Schedule ID</th>
+            <th>Price</th>
+            <th>IsValidated</th>
+            <th>Created At</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var ticket in Model)
+        {
+            <tr>
+                <td>@ticket.TicketId</td>
+                <td>@ticket.TrainScheduleId</td>
+                <td>@ticket.Price</td>
+                <td>@ticket.IsValidated</td>
+                <td>@ticket.CreatedAt</td>
+            </tr>
+        }
+    </tbody>
+</table>
+

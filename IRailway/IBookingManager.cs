@@ -2,9 +2,9 @@
 
 namespace IRailway
 {
-  public interface IBookingManager
-  {
-    public List<Ticket> GetTickets();
-    public void BookTicket(Ticket ticket);
-  }
+    public interface IBookingManager
+    {
+        public List<Ticket> GetTickets();
+        public void AddTicket(Ticket ticket);
+    }
 }
