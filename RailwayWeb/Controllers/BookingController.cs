@@ -5,20 +5,22 @@ using RailwayBusLogic.Manager;
 
 namespace RailwayWeb.Controllers
 {
-  public class BookingController : Controller
-  {
-    public IActionResult Index()
+    public class BookingController : Controller
     {
-      IBookingManager bookingManager = new BookingManager();
-      return View();
-    }
+        private readonly IBookingManager _bookingManager = new BookingManager();
 
-    [HttpPost]
-    public ActionResult AddTicket(Ticket ticket)
-    {
-      IBookingManager bookingManager = new BookingManager();
-      bookingManager.AddTicket(ticket);
-      return View(bookingManager.GetTickets());
+        public ActionResult Index()
+        {
+            List<Ticket> tickets = _bookingManager.GetTickets();
+            ViewBag.Tickets = tickets;
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult AddTicket(Ticket ticket)
+        {
+            _bookingManager.AddTicket(ticket);
+            return RedirectToAction("Index");
+        }
     }
-  }
 }

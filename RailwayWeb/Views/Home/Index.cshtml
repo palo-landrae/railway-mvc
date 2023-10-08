@@ -1,0 +1,26 @@
+@{
+    ViewBag.Title = "Railway";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Tickets</h1>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Ticket ID</th>
+            <th>Train Name</th>
+            <th>Departure Station</th>
+                        <th>Departure Station</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var ticket in ViewBag.AvailableTickets)
+        {
+            <tr>
+                <td>@ticket.TicketId</td>
+                <td>@ticket.TrainName</td>
+            </tr>
+        }
+    </tbody>
+</table>
+

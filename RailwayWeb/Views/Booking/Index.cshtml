@@ -1,14 +1,33 @@
-@model RailwayModel.Models.Ticket
-@using (Html.BeginForm("AddTicket", "Booking", FormMethod.Post))
-{
-    <h1>Add a Ticket</h1>
-    <p>Ticket ID</p>
-    @Html.TextBoxFor(ticket => ticket.TicketId)
-    <p>TrainScheduleId</p>
-    @Html.TextBoxFor(ticket => ticket.TrainScheduleId)
-    <p>Price</p>
-    @Html.TextBoxFor(ticket => ticket.TicketId)
-    <br>
-    <br>
-    <button type="submit">Add Ticket</button>
+@{
+    ViewBag.Title = "Student List";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
+
+<h1>Tickets</h1>
+<table class="table bg-primary">
+    <thead>
+        <tr>
+            <th>Ticket ID</th>
+            <th>Train Schedule ID</th>
+            <th>Price</th>
+            <th>IsValidated</th>
+            <th>Created At</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var ticket in ViewBag.Tickets)
+        {
+            <tr>
+                <td>@ticket.TicketId</td>
+                <td>@ticket.TrainScheduleId</td>
+                <td>@ticket.Price</td>
+                <td>@ticket.IsValidated</td>
+                <td>@ticket.CreatedAt</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<div>
+  @Html.Partial("AddTicket")
+</div>

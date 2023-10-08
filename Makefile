@@ -1,6 +1,7 @@
 build:
 	dotnet build
 	dotnet build IRailway/IRailway.csproj
+	dotnet build RailwayBusLogic/RailwayBusLogic.csproj
 
 clean:
 	dotnet clean

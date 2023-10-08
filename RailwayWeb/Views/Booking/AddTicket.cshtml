@@ -1,26 +1,28 @@
-@model List<RailwayModel.Models.Ticket>
-<h1>Tickets</h1>
-<table class="table">
-    <thead>
-        <tr>
-            <th>Ticket ID</th>
-            <th>Train Schedule ID</th>
-            <th>Price</th>
-            <th>IsValidated</th>
-            <th>Created At</th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var ticket in Model)
-        {
-            <tr>
-                <td>@ticket.TicketId</td>
-                <td>@ticket.TrainScheduleId</td>
-                <td>@ticket.Price</td>
-                <td>@ticket.IsValidated</td>
-                <td>@ticket.CreatedAt</td>
-            </tr>
-        }
-    </tbody>
-</table>
+@model RailwayModel.Models.Ticket
 
+<h3>Add a Ticket</h3>
+
+@using (Html.BeginForm("AddTicket", "Booking", FormMethod.Post))
+{
+    <div class="form-group">
+        <label for="TicketId">Ticket ID:</label>
+        @Html.TextBoxFor(ticket => ticket.TicketId, new { @class = "form-control" })
+    </div>
+
+    <div class="form-group">
+        <label for="TrainScheduleId">Train Schedule ID:</label>
+        @Html.TextBoxFor(ticket => ticket.TrainScheduleId, new { @class = "form-control" })
+    </div>
+
+    <div class="form-group">
+        <label for="Price">Price:</label>
+        @Html.TextBoxFor(ticket => ticket.Price, new { @class = "form-control" })
+    </div>
+
+    <div class="form-group">
+        <label for="IsValidated">Is Validated:</label>
+        @Html.CheckBoxFor(ticket => ticket.IsValidated)
+    </div>
+
+    <button type="submit" class="btn btn-primary">Add Ticket</button>
+}
